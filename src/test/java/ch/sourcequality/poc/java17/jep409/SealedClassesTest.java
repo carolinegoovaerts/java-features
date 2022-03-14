@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class SealedClassesFeatureTest {
+class SealedClassesTest {
 
     private SealedClassesFeature sealedClassesFeature;
 
