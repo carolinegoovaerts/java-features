@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class SwitchExpressionsTest {
+class SwitchExpressionsTest {
     private static Object exercise(Color color) {
         return switch (color) {
             case RED -> 1;
