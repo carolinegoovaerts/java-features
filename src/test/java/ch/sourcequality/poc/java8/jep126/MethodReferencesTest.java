@@ -10,36 +10,60 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class MethodReferencesTest {
 
-    private static void assertSortingInDescendingOrder(Comparator<? super Double> comparator) {
-        Double[] elements = {1d, 0d, 99d};
-        Double[] expected = new Double[]{99d, 1d, 0d};
+    private static void assertSorting(Double[] expected, Double[] elements, Comparator<Double> comparator) {
         Arrays.sort(elements, comparator);
         assertArrayEquals(expected, elements);
     }
 
     @Test
-    void useReferenceToAStaticMethod() {
-        Comparator<Double> comparator = (a, b) -> -Double.compare(a, b);
-        assertSortingInDescendingOrder(comparator);
+    void referenceToAStaticMethod() {
+        Double[] elements = new Double[]{1d, 0d, 99d};
+        Double[] expected = new Double[]{0d, 1d, 99d};
+        Comparator<Double> comparator = Double::compare;
+
+        assertSorting(expected, elements, comparator);
     }
 
     @Test
-    void referenceInstanceMethodOfAParticularObject() {
+    void referenceToAnInstanceMethodOfAParticularObject() {
+        Double[] elements = new Double[]{1d, 0d, 99d};
+        Double[] expected = new Double[]{99d, 1d, 0d};
         Comparator<Double> comparator = new InverseDoubleComparator()::compare;
-        assertSortingInDescendingOrder(comparator);
+
+        assertSorting(expected, elements, comparator);
+    }
+
+    @Test
+    void referenceToAnInstanceMethodOfAnArbitraryObjectOfAParticularType() {
+        Double[] elements = new Double[]{1d, 0d, 99d};
+        Double[] expected = new Double[]{0d, 1d, 99d};
+        Comparator<Double> comparator = Double::compareTo;
+
+        assertSorting(expected, elements, comparator);
+    }
+
+    @Test
+    void referenceToAConstructor() {
+        fail("not yet implemented");
+    }
+
+    // TODO move to FunctionalInterfacesTest?
+    @Test
+    void lambdaExpressionReferencingAStaticMethod() {
+        Double[] elements = new Double[]{1d, 0d, 99d};
+        Double[] expected = new Double[]{99d, 1d, 0d};
+        Comparator<Double> comparator = (a, b) -> -Double.compare(a, b);
+
+        assertSorting(expected, elements, comparator);
     }
 
     @Test
     void omitTheNameOfTheFunctionalInterfaceMethod() {
+        Double[] elements = new Double[]{1d, 0d, 99d};
+        Double[] expected = new Double[]{99d, 1d, 0d};
         Comparator<Double> comparator = new InverseDoubleComparator();
-        assertSortingInDescendingOrder(comparator);
-    }
 
-    @Test
-    void x() {
-        // TODO finish "Kinds of Method References"
-        //  in https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.htmlKinds
-        fail("not yet implemented");
+        assertSorting(expected, elements, comparator);
     }
 
     private static final class InverseDoubleComparator implements Comparator<Double> {
