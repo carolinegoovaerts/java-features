@@ -2,15 +2,19 @@ package ch.sourcequality.poc.java8.jep126;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.function.DoubleUnaryOperator;
+import java.util.stream.DoubleStream;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FunctionalInterfacesTest {
 
     @Test
-    void shouldMultiply() {
-        Calculation multiplication = new Calculation() { // anonymous class
+    void anonymousClass() {
+        Calculation<Integer> multiplication = new Calculation<>() {
             @Override
-            public int evaluate(int first, int second) {
+            public Integer evaluate(Integer first, Integer second) {
                 return first * second;
             }
         };
@@ -18,29 +22,45 @@ class FunctionalInterfacesTest {
     }
 
     @Test
-    void shouldSubtract() {
-        Calculation subtraction = (int a, int b) -> { // lambda expression: return value requires code block
+    void lambdaExpressionWithCodeBlock() {
+        Calculation<Integer> subtraction = (Integer a, Integer b) -> {
             return a - b;
         };
         assertEquals(1, subtraction.evaluate(3, 2));
     }
 
     @Test
-    void shouldDivide() {
-        Calculation division = (a, b) -> a / b; // lambda expression: return value is evaluated at runtime
-        assertEquals(3, division.evaluate(9, 3));
+    void lambdaExpressionHavingReturnValueEvaluatedAtRuntime() {
+        Calculation<Double> division = (a, b) -> a / b;
+        assertEquals(3, division.evaluate(9d, 3d));
     }
 
     @Test
-    void shouldAdd() {
-        Calculation addition = (a, b) -> {
+    void lambdaExpressionWithLocalTypeInferenceQuestionMark() {
+        Calculation<Integer> addition = (a, b) -> {
             return Integer.sum(a, b);
         };
         assertEquals(3, addition.evaluate(1, 2));
     }
 
+    @Test
+    void omitTheNameOfTheFunctionalInterfaceMethod() {
+        double[] result = DoubleStream.of(1, 2, 4)
+                .map(new Reciprocal())
+                .toArray();
+
+        assertArrayEquals(new double[]{1, 0.5, 0.25}, result);
+    }
+
     @FunctionalInterface // verifies FunctionalInterface criteria @compile time
-    interface Calculation {
-        int evaluate(int first, int second);
+    interface Calculation<T> {
+        T evaluate(T first, T second);
+    }
+
+    private static final class Reciprocal implements DoubleUnaryOperator {
+        @Override
+        public double applyAsDouble(double operand) {
+            return 1 / operand;
+        }
     }
 }
