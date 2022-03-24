@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MethodReferencesTest {
+class MethodReferencesTest {
 
     private static void assertSorting(Double[] expected, Double[] elements, Comparator<Double> comparator) {
         // Java compiler infers the method type arguments to be (Double, Double)
