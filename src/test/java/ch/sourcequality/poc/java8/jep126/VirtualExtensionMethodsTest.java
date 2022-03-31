@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class VirtualExtensionMethodsTest {
+    public static final String FAN_FINS = "fan fins";
+    public static final String USE_LONGS_AND_AIR_SACS = "use longs and air sacs";
     private static final String USE_LONGS = "use longs";
     private static final String CAN_T_FLY_YET = "can't fly yet";
     private static final String FLAP_WINGS = "flap wings";
     private static final String I_COULD_FLY_IF_I_WANTED_TO = "I could fly if I wanted to";
     private static final String USE_GILLS = "use gills";
-    public static final String FAN_FINS = "fan fins";
-    public static final String USE_LONGS_AND_AIR_SACS = "use longs and air sacs";
 
     @Test
     void shouldReturnExpectedResponse() {
@@ -51,9 +51,25 @@ class VirtualExtensionMethodsTest {
 
     private interface Animal {
         String breathe();
+
         default String fly() {
             return CAN_T_FLY_YET;
         }
+    }
+
+    private interface Fish extends Animal {
+        static Fish flyingFish() {
+            return () -> FAN_FINS;
+        }
+
+        @Override
+        default String breathe() {
+            return USE_GILLS;
+        }
+
+        // redeclare default method
+        @Override
+        String fly();
     }
 
     private static final class Human implements Animal {
@@ -73,19 +89,5 @@ class VirtualExtensionMethodsTest {
         public String fly() {
             return FLAP_WINGS;
         }
-    }
-
-    private interface Fish extends Animal {
-        static Fish flyingFish() {
-            return () -> FAN_FINS;
-        }
-
-        @Override
-        default String breathe() {
-            return USE_GILLS;
-        }
-
-        @Override
-        String fly(); // redeclare default method
     }
 }

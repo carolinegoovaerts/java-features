@@ -8,6 +8,7 @@ import java.util.stream.DoubleStream;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@SuppressWarnings({"Convert2MethodRef", "Convert2Lambda", "CodeBlock2Expr"})
 class FunctionalInterfacesTest {
 
     @Test
@@ -52,7 +53,7 @@ class FunctionalInterfacesTest {
         assertArrayEquals(new double[]{1, 0.5, 0.25}, result);
     }
 
-    @FunctionalInterface // verifies FunctionalInterface criteria @compile time
+    @FunctionalInterface
     interface Calculation<T> {
         T evaluate(T first, T second);
     }
