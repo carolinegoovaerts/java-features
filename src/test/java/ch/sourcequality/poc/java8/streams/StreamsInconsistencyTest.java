@@ -1,4 +1,4 @@
-package ch.sourcequality.poc.java8.jep126;
+package ch.sourcequality.poc.java8.streams;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -6,8 +6,8 @@ import org.junit.jupiter.api.function.Executable;
 import java.util.*;
 import java.util.function.Function;
 
-import static ch.sourcequality.poc.java8.jep126.Fixtures.LIST_OF_INTEGERS;
-import static ch.sourcequality.poc.java8.jep126.Fixtures.emptyListOfIntegersListSize;
+import static ch.sourcequality.poc.java8.streams.Fixtures.LIST_OF_INTEGERS;
+import static ch.sourcequality.poc.java8.streams.Fixtures.emptyListOfIntegersListSize;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings({"OptionalGetWithoutIsPresent", "SimplifyStreamApiCallChains", "UseBulkOperation"})

@@ -1,4 +1,4 @@
-package ch.sourcequality.poc.java8.jep126;
+package ch.sourcequality.poc.java8.streams;
 
 import org.junit.jupiter.api.Test;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import static ch.sourcequality.poc.java8.jep126.Fixtures.LIST_OF_INTEGERS;
+import static ch.sourcequality.poc.java8.streams.Fixtures.LIST_OF_INTEGERS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 

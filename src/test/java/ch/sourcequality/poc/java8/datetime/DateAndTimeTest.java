@@ -1,4 +1,4 @@
-package ch.sourcequality.poc.java8.jep126;
+package ch.sourcequality.poc.java8.datetime;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,19 +13,19 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DateAndTimeTest {
 
     @Test
-    void demoDayOfWeek() {
+    void dayOfWeek() {
         DayOfWeek dayOfWeek = DayOfWeek.MONDAY.plus(4);
         assertEquals(DayOfWeek.FRIDAY, dayOfWeek);
     }
 
     @Test
-    void demoDisplayName() {
+    void displayName() {
         String displayName = Month.APRIL.getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
         assertEquals("Apr", displayName);
     }
 
     @Test
-    void demoTemporalAdjuster() {
+    void temporalAdjuster() {
         LocalDate localDate = LocalDate.of(2022, Month.JANUARY, 1);
         TemporalAdjuster nextFriday = TemporalAdjusters.next(DayOfWeek.FRIDAY);
 
@@ -33,7 +33,7 @@ public class DateAndTimeTest {
     }
 
     @Test
-    void demoLeapYearByYearMonth() {
+    void leapYearByYearMonth() {
         YearMonth february2020 = YearMonth.of(2020, Month.FEBRUARY);
         YearMonth april2020 = YearMonth.of(2020, Month.APRIL);
 
@@ -43,13 +43,13 @@ public class DateAndTimeTest {
     }
 
     @Test
-    void demoLeapYearByMonthDay() {
+    void leapYearByMonthDay() {
         MonthDay february29th = MonthDay.of(Month.FEBRUARY, 29);
         assertFalse(february29th.isValidYear(2021));
     }
 
     @Test
-    void demoLeapYearByYear() {
+    void leapYearByYear() {
         Year twoThousand = Year.of(2000);
         assertTrue(twoThousand.isLeap());
     }

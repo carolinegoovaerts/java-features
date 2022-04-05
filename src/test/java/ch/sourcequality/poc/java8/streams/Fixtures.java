@@ -1,4 +1,4 @@
-package ch.sourcequality.poc.java8.jep126;
+package ch.sourcequality.poc.java8.streams;
 
 import java.util.ArrayList;
 import java.util.Arrays;
