@@ -14,12 +14,18 @@
 
     <properties>
         <java.version>11</java.version>
+        <jigsaw.version>1.0.0-SNAPSHOT</jigsaw.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.sourcequality.poc</groupId>
+            <artifactId>jigsaw</artifactId>
+            <version>${jigsaw.version}</version>
         </dependency>
     </dependencies>
 
