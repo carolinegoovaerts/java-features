@@ -1,4 +1,4 @@
 package ch.sourcequality.poc.jigsaw;
 
-public class Book {
+public final class Book {
 }
