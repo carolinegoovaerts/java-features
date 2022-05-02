@@ -53,4 +53,8 @@ public class MillingCoinTest {
     private String pathToResource(String resource) {
         return this.getClass().getResource(resource).getPath();
     }
+
+    private interface Repository<T> {
+        T getFirst();
+    }
 }
