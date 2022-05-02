@@ -5,51 +5,47 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class VirtualExtensionMethodsTest {
-    public static final String FAN_FINS = "fan fins";
-    public static final String USE_LONGS_AND_AIR_SACS = "use longs and air sacs";
-    private static final String USE_LONGS = "use longs";
-    private static final String CAN_T_FLY_YET = "can't fly yet";
-    private static final String FLAP_WINGS = "flap wings";
-    private static final String I_COULD_FLY_IF_I_WANTED_TO = "I could fly if I wanted to";
-    private static final String USE_GILLS = "use gills";
 
     @Test
     void shouldReturnExpectedResponse() {
         Animal human = new Human();
         String response = human.breathe();
-        assertEquals(USE_LONGS, response);
+        assertEquals(Human.USE_LONGS, response);
     }
 
     @Test
     void shouldReturnDefaultResponseWhenNotImplemented() {
         Animal human = new Human();
         String response = human.fly();
-        assertEquals(CAN_T_FLY_YET, response);
+        assertEquals(Animal.CAN_T_FLY_YET, response);
     }
 
     @Test
     void redeclareDefaultMethod() {
         // implement the remaining abstract method using a lambda expression
-        Animal fish = (Fish) () -> I_COULD_FLY_IF_I_WANTED_TO;
+        String expected = "I could fly if I wanted to";
+        Animal fish = (Fish) () -> expected;
         String response = fish.fly();
 
-        assertEquals(I_COULD_FLY_IF_I_WANTED_TO, response);
+        assertEquals(expected, response);
     }
 
     @Test
     void redefineDefaultMethod() {
         Animal bird = new Bird();
         String response = bird.fly();
-        assertEquals(FLAP_WINGS, response);
+        assertEquals(Bird.FLAP_WINGS, response);
     }
 
     @Test
     void invokeStaticInterfaceMethod() {
         Animal flyingFish = Fish.flyingFish();
-        assertEquals(FAN_FINS, flyingFish.fly());
+        assertEquals(Fish.FAN_FINS, flyingFish.fly());
     }
 
     private interface Animal {
+        String CAN_T_FLY_YET = "can't fly yet";
+
         String breathe();
 
         default String fly() {
@@ -58,6 +54,9 @@ class VirtualExtensionMethodsTest {
     }
 
     private interface Fish extends Animal {
+        String FAN_FINS = "fan fins";
+        String USE_GILLS = "use gills";
+
         static Fish flyingFish() {
             return () -> FAN_FINS;
         }
@@ -73,6 +72,8 @@ class VirtualExtensionMethodsTest {
     }
 
     private static final class Human implements Animal {
+        private static final String USE_LONGS = "use longs";
+
         @Override
         public String breathe() {
             return USE_LONGS;
@@ -80,6 +81,9 @@ class VirtualExtensionMethodsTest {
     }
 
     private static final class Bird implements Animal {
+        private static final String FLAP_WINGS = "flap wings";
+        private static final String USE_LONGS_AND_AIR_SACS = "use longs and air sacs";
+
         @Override
         public String breathe() {
             return USE_LONGS_AND_AIR_SACS;
