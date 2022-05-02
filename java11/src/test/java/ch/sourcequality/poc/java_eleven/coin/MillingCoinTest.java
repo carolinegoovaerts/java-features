@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -20,7 +21,7 @@ public class MillingCoinTest {
     }
 
     @Test
-    void shouldCompileWithoutWarnings() {
+    void demoSafeVarargsForPrivateMethods() {
         CollectionsFixture fixture = new CollectionsFixture();
         List<Integer> collection = new ArrayList<>();
         fixture.addAll(collection, 1, 2);
@@ -48,6 +49,17 @@ public class MillingCoinTest {
             }
         };
         assertEquals(expected, simpleRepo.getFirst());
+    }
+
+    @Test
+    void demoPrivateInterfaceMethods() {
+        Index index = new Index() {
+        };
+        Map<String, Object> clean = index.clean();
+        Map<String, Object> cleanAdd = index.cleanAdd("a", 1);
+        cleanAdd.remove("a");
+
+        assertEquals(clean, cleanAdd);
     }
 
     private String pathToResource(String resource) {
