@@ -38,7 +38,6 @@ public class MillingCoinTest {
         assertEquals(expected, firstLine);
     }
 
-    @SuppressWarnings("all")
     private String pathToResource(String resource) {
         return this.getClass().getResource(resource).getPath();
     }
