@@ -11,7 +11,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MillingCoinTest {
+class MillingCoinTest {
 
     private static String firstLineFromFile(String path) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(path));
@@ -32,7 +32,7 @@ public class MillingCoinTest {
     @Test
     void demoTryWithResourcesWithFinalVariable() throws Exception {
         String resource = "/lorem-ipsum.txt";
-        String expected = "Lorem ipsum ...";
+        String expected = "Lorem ipsum";
 
         String firstLine = firstLineFromFile(pathToResource(resource));
 

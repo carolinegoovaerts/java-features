@@ -3,7 +3,7 @@ package ch.sourcequality.poc.java_eleven.coin;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class CollectionsFixture {
+class CollectionsFixture {
 
     @SafeVarargs
     private <T> void innerAddAll(Collection<? super T> collection, T... elements) {

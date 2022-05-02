@@ -14,7 +14,6 @@ class FunctionalInterfacesTest {
     @Test
     void anonymousClass() {
         Calculation<Integer> multiplication = new Calculation<Integer>() {
-
             @Override
             public Integer evaluate(Integer first, Integer second) {
                 return first * second;
@@ -32,17 +31,17 @@ class FunctionalInterfacesTest {
     }
 
     @Test
-    void lambdaExpressionHavingReturnValueEvaluatedAtRuntime() {
-        Calculation<Double> division = (a, b) -> a / b;
-        assertEquals(3, division.evaluate(9d, 3d));
-    }
-
-    @Test
-    void lambdaExpressionWithLocalTypeInferenceQuestionMark() {
+    void implicitlyTypedLambdaExpression() {
         Calculation<Integer> addition = (a, b) -> {
             return Integer.sum(a, b);
         };
         assertEquals(3, addition.evaluate(1, 2));
+    }
+
+    @Test
+    void lambdaExpressionHavingReturnValueEvaluatedAtRuntime() {
+        Calculation<Double> division = (a, b) -> a / b;
+        assertEquals(3, division.evaluate(9d, 3d));
     }
 
     @Test
@@ -55,7 +54,7 @@ class FunctionalInterfacesTest {
     }
 
     @FunctionalInterface
-    interface Calculation<T> {
+    private interface Calculation<T> {
         T evaluate(T first, T second);
     }
 

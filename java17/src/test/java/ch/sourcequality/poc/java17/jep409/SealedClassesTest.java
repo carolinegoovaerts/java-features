@@ -28,7 +28,7 @@ class SealedClassesTest {
     @Test
     void shouldReturnDifferentColors() {
         Set<RedBlueGreen> colors = new HashSet<>();
-        IntStream.range(1, 5).forEach(i -> colors.add(sealedClassesFeature.randomColor()));
+        IntStream.range(0, 5).forEach(i -> colors.add(sealedClassesFeature.randomColor()));
 
         assertTrue(colors.size() > 1);
     }
