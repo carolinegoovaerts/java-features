@@ -38,6 +38,18 @@ public class MillingCoinTest {
         assertEquals(expected, firstLine);
     }
 
+    @Test
+    void demoDiamondSyntaxInAnonymousClass() {
+        int expected = 1;
+        Repository<Integer> simpleRepo = new Repository<>() {
+            @Override
+            public Integer getFirst() {
+                return expected;
+            }
+        };
+        assertEquals(expected, simpleRepo.getFirst());
+    }
+
     private String pathToResource(String resource) {
         return this.getClass().getResource(resource).getPath();
     }
