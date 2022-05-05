@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SuppressWarnings("OptionalGetWithoutIsPresent")
 class StreamsTest {
-    public static final String ANY_WHITESPACE = " +";
+    private static final String ANY_WHITESPACE = " +";
     private static final Fruit APPLE = new Fruit(Color.RED, "apple", 58);
     private static final Fruit ORANGE = new Fruit(Color.ORANGE, "orange", 62);
     private static final Fruit STRAWBERRY = new Fruit(Color.RED, "strawberry", 49);

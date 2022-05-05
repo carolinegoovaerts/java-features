@@ -12,8 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LocalTypeInferenceTest {
 
-    private enum Fruit {APPLE}
-
     @Test
     void shouldInferToMapOfObjectToObject() {
         // diamond syntax since JDK 7
@@ -56,4 +54,6 @@ class LocalTypeInferenceTest {
             assertEquals("Lorem ipsum", reader.readLine());
         }
     }
+
+    private enum Fruit {APPLE}
 }

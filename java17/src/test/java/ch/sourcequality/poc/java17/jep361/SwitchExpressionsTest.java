@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SwitchExpressionsTest {
+
     private static Object exercise(Color color) {
         return switch (color) {
             case RED -> 1;
@@ -17,9 +18,7 @@ class SwitchExpressionsTest {
 
     @Test
     void shouldThrowException() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            var i = exercise(Color.LIGHT_BLUE);
-        });
+        assertThrows(IllegalArgumentException.class, () -> exercise(Color.LIGHT_BLUE));
     }
 
     @Test
