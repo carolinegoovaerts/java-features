@@ -3,7 +3,7 @@ package ch.sourcequality.poc.java17.jep395;
 import java.math.BigDecimal;
 import java.util.Currency;
 
-class Examples {
+class Records {
 
     record Point(int x, int y) {
     }

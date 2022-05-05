@@ -8,8 +8,9 @@ import java.util.Currency;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ch.sourcequality.poc.java17.jep395.Examples.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static ch.sourcequality.poc.java17.jep395.Records.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RecordTest {
 
@@ -35,8 +36,8 @@ class RecordTest {
 
     @Test
     void demoEqualsContract() {
-        var origin = new Point(0,0);
-        var anotherOrigin = new Point(0,0);
+        var origin = new Point(0, 0);
+        var anotherOrigin = new Point(0, 0);
 
         assertEquals(anotherOrigin, origin);
     }
