@@ -12,7 +12,7 @@ import static ch.sourcequality.poc.java17.jep395.Records.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class RecordTest {
+class RecordsTest {
 
     private static final Currency CHF = Currency.getInstance("CHF");
     private static final Currency EUR = Currency.getInstance("EUR");
