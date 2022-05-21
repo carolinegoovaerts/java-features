@@ -1,2 +1,4 @@
-# java-features
-Demo of "new" Java features
+# Java features
+
+Demo of Java SE features, sorted by JDK version of appearance.
+
