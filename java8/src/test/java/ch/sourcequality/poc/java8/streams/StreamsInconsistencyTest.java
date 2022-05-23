@@ -35,7 +35,6 @@ public class StreamsInconsistencyTest {
     void concatenateUsingAssociativeFunction() {
         List<String> listOfStrings = new ArrayList<>(Arrays.asList("one", "two"));
         String concatenation = listOfStrings.stream()
-                .peek(System.out::println)
                 .reduce((a, b) -> a + " " + b)
                 .get();
 
